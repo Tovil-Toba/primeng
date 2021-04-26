@@ -1,0 +1,14 @@
+<p-menubar [model]="items" styleClass="p-mb-3">
+  <ng-template pTemplate="start">
+    <img src="assets/images/primeng.svg" class="p-mr-2">
+    <img
+      *ngIf="themesService.selectedThemeImage"
+      src="assets/images/themes/{{themesService.selectedThemeImage}}"
+      class="p-mr-2"
+      height="40"
+    >
+  </ng-template>
+  <ng-template pTemplate="end">
+<!--    <app-themes-dropdown></app-themes-dropdown>-->
+  </ng-template>
+</p-menubar>
