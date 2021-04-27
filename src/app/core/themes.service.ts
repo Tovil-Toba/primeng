@@ -1,42 +1,48 @@
 import { Injectable } from '@angular/core';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
-import { Theme } from '../shared/theme';
-import { Themes } from '../shared/themes';
-import themesJson from './../shared/themes.json';
-import { DEFAULT_SELECTED_THEME } from '../shared/constants';
+import { Theme } from '../interfaces/theme';
+import { Themes } from '../interfaces/themes';
+import { ThemeFilename } from '../interfaces/theme-filename';
+
+import { THEMES } from '../constants/themes';
+import { DEFAULT_THEME } from '../constants/default-theme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemesService {
 
-  selectedTheme: string = DEFAULT_SELECTED_THEME;
+  selectedTheme: ThemeFilename;
   selectedThemeImage: string;
   themes: Themes;
 
-  constructor() {
-    this.themes = themesJson;
+  constructor(private dbService: NgxIndexedDBService) {
+    this.themes = THEMES;
   }
 
-  changeTheme(filename: string): void {
-    if (!filename) {
-      filename = DEFAULT_SELECTED_THEME;
-    }
+  changeTheme(filename: ThemeFilename): void {
     const themeLink: HTMLLinkElement = document.getElementById('theme-css') as HTMLLinkElement;
     themeLink.href = `assets/css/themes/${filename}/theme.css`;
     this.setSelectedTheme(filename);
   }
 
   setDefaultTheme(): void {
-    this.changeTheme(DEFAULT_SELECTED_THEME);
+    this.dbService.getByKey('settings', 'selectedTheme')
+      .subscribe((item: { key: string; value: ThemeFilename }) => {
+        this.changeTheme(item.value || DEFAULT_THEME);
+      });
   }
 
-  setSelectedTheme(filename: string): void {
+  setSelectedTheme(filename: ThemeFilename): void {
     Object.values(this.themes).forEach((themes: Theme[]) => {
       themes.forEach((theme: Theme) => {
         if (theme.filename === filename) {
           this.selectedTheme = theme.filename;
           this.selectedThemeImage = theme.image;
+          this.dbService
+            .update('settings', { key: 'selectedTheme', value: theme.filename })
+            .subscribe();
           return;
         }
       });

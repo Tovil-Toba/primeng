@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
-import { ThemesService } from '../core/themes.service';
-import { Theme } from '../shared/theme';
+import { ThemesService } from '../../core/themes.service';
+import { Theme } from '../../interfaces/theme';
+import { ThemeFilename } from '../../interfaces/theme-filename';
 
 @Component({
   selector: 'app-menubar',
@@ -15,7 +16,7 @@ export class MenubarComponent implements OnInit {
 
   constructor(private themesService: ThemesService) { }
 
-  get themesItems(): MenuItem[] {
+  private get themesItems(): MenuItem[] {
     const menuItems: MenuItem[] = [];
     Object.entries(this.themesService.themes)
       .forEach(([key, themes]) => {
@@ -47,7 +48,7 @@ export class MenubarComponent implements OnInit {
     return menuItems;
   }
 
-  changeTheme(filename: string) {
+  changeTheme(filename: ThemeFilename) {
     this.themesService.changeTheme(filename);
   }
 

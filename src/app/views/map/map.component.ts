@@ -11,7 +11,7 @@ export class MapComponent implements OnInit {
 
   constructor(private scriptService: ScriptService) {
     this.scriptService.initScript()
-      .subscribe(ymaps => console.log(ymaps));
+      .subscribe((ymaps) => console.log(ymaps));
   }
 
   ngOnInit() {
