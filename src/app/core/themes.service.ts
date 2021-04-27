@@ -30,7 +30,8 @@ export class ThemesService {
   setDefaultTheme(): void {
     this.dbService.getByKey('settings', 'selectedTheme')
       .subscribe((item: { key: string; value: ThemeFilename }) => {
-        this.changeTheme(item.value || DEFAULT_THEME_FILENAME);
+        const defaultThemeFilename = (item && item.value) || DEFAULT_THEME_FILENAME;
+        this.changeTheme(defaultThemeFilename);
       });
   }
 
