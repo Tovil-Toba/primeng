@@ -6,7 +6,7 @@ import { Themes } from '../interfaces/themes';
 import { ThemeFilename } from '../interfaces/theme-filename';
 
 import { THEMES } from '../constants/themes';
-import { DEFAULT_THEME } from '../constants/default-theme';
+import { DEFAULT_THEME_FILENAME } from '../constants/default-theme-filename';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class ThemesService {
   setDefaultTheme(): void {
     this.dbService.getByKey('settings', 'selectedTheme')
       .subscribe((item: { key: string; value: ThemeFilename }) => {
-        this.changeTheme(item.value || DEFAULT_THEME);
+        this.changeTheme(item.value || DEFAULT_THEME_FILENAME);
       });
   }
 
