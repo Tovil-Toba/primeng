@@ -19,7 +19,7 @@ export class MenubarComponent implements OnInit {
   private get themesItems(): MenuItem[] {
     const menuItems: MenuItem[] = [];
     Object.entries(this.themesService.themes)
-      .forEach(([key, themes]) => {
+      .forEach(([key, themes]: [string, Theme[]]) => {
         const menuItem: MenuItem = {
           label: key,
           items: []

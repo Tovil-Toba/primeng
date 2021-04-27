@@ -20,7 +20,7 @@ export class ThemesDropdownComponent implements OnInit {
   private getGroupedThemes(): void {
     this.groupedThemes = [];
     Object.entries(this.themesService.themes)
-      .forEach(([key, themes]) => {
+      .forEach(([key, themes]: [string, Theme[]]) => {
         const selectItemGroup: SelectItemGroup = {
           label: key,
           items: []
