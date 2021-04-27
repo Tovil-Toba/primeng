@@ -48,7 +48,7 @@ export class MenubarComponent implements OnInit {
     return menuItems;
   }
 
-  changeTheme(filename: ThemeFilename) {
+  changeTheme(filename: ThemeFilename): void {
     this.themesService.changeTheme(filename);
   }
 
