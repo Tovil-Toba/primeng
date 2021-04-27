@@ -14,14 +14,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      {label: 'Computer'},
-      {label: 'Notebook'},
-      {label: 'Accessories'},
-      {label: 'Backpacks'},
-      {label: 'Item'}
+      { label: 'Computer' },
+      { label: 'Notebook' },
+      { label: 'Accessories' },
+      { label: 'Backpacks' },
+      { label: 'Item' }
     ];
 
-    this.home = {icon: 'pi pi-home', routerLink: '/'};
+    this.home = { icon: 'pi pi-home', routerLink: '/' };
   }
 
 }
