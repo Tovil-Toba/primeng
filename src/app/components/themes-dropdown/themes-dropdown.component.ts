@@ -14,7 +14,7 @@ export class ThemesDropdownComponent implements OnInit {
 
   groupedThemes: SelectItemGroup[];
 
-  constructor(private themesService: ThemesService) {
+  constructor(public themesService: ThemesService) {
   }
 
   private getGroupedThemes(): void {

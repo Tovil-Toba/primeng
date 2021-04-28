@@ -14,7 +14,7 @@ export class MenubarComponent implements OnInit {
 
   items: MenuItem[];
 
-  constructor(private themesService: ThemesService) { }
+  constructor(public themesService: ThemesService) { }
 
   private get themesItems(): MenuItem[] {
     const menuItems: MenuItem[] = [];
