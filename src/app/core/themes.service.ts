@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 
-import { Theme } from '../interfaces/theme';
-import { Themes } from '../interfaces/themes';
-import { ThemeFilename } from '../interfaces/theme-filename';
+import { Theme } from '../models/theme';
+import { Themes } from '../models/themes';
+import { ThemeFilename } from '../models/theme-filename';
 
 import { THEMES } from '../constants/themes';
 import { DEFAULT_THEME_FILENAME } from '../constants/default-theme-filename';

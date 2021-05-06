@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { PrimeNGConfig, FilterService } from 'primeng/api';
 
 import { ThemesService } from './core/themes.service';
+import { themeChangeAnimation } from './shared/animations';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,17 @@ import { ThemesService } from './core/themes.service';
   providers: [
     FilterService,
     PrimeNGConfig
-  ]
+  ],
+  animations: [themeChangeAnimation]
 })
 export class AppComponent implements OnInit {
+  @HostBinding('@.disabled') animationsDisabled = false;
 
   title = 'Prime';
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private themesService: ThemesService
+    public themesService: ThemesService
   ) {
   }
 

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 import { ThemesService } from '../../core/themes.service';
-import { Theme } from '../../interfaces/theme';
-import { ThemeFilename } from '../../interfaces/theme-filename';
+import { Theme } from '../../models/theme';
+import { ThemeFilename } from '../../models/theme-filename';
 
 @Component({
   selector: 'app-menubar',

@@ -1,4 +1,4 @@
-import { Themes } from '../interfaces/themes';
+import { Themes } from '../models/themes';
 
 export const THEMES: Themes = {
   Bootstrap: [

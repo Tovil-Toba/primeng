@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { MenubarModule } from 'primeng/menubar';
 import { PanelModule } from 'primeng/panel';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +40,8 @@ import { DB_CONFIG } from './constants/db-config';
     FormsModule,
     MenubarModule,
     NgxIndexedDBModule.forRoot(DB_CONFIG),
-    PanelModule
+    PanelModule,
+    ScrollTopModule
   ],
   providers: [],
   bootstrap: [AppComponent]
